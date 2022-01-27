@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
+:root {
+  --color1: #f24405;
+  --color2: #a62f03;
+  --color3: #a6a6a6;
+  --color4: #404040;
+  --color5: #0d0d0d;
+
+  /* --accent-color: orangered; */
+}
+
 * {
   box-sizing: border-box;
 }
@@ -15,12 +25,95 @@ body {
   margin: 0;
 }
 
+/* !Content css */
+
+.content-container {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+}
+
+.content-left {
+  height: 100%;
+  width: 30vw;
+
+  background-color: var(--color5);
+  color: var(--color3);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-card {
+  margin: 0;
+  width: 70%;
+  height: 40%;
+  min-width: 240px;
+  min-height: 280px;
+  /* background-color: red; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 40px;
+}
+
+.profile-card .profile-img {
+  background-image: url("https://randomuser.me/api/portraits/men/46.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 40%;
+  border: 2px solid var(--color4);
+  height: 100px;
+  width: 100px;
+}
+
+.profile-card h1 {
+  color: var(--color1);
+  margin: 0;
+  font-size: 2.6rem;
+  font-weight: 600;
+}
+
+.profile-card h4 {
+  margin: 0;
+  color: var(--color1);
+  opacity: 0.5;
+
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.profile-card p {
+  margin: 0;
+  color: var(--color3);
+  font-size: 0.7rem;
+}
+
+.content-right {
+  height: 100%;
+  width: 70vw;
+
+  background-color: var(--color3);
+}
+
+/* !End of Content css */
+
+/* !Terminal css */
+
 .terminal-container {
   position: fixed;
   bottom: 0;
-  left: 0;
+  right: 0;
 
-  background-color: #000;
+  background-color: var(--color5);
   width: 40vw;
   height: 40vh;
 
@@ -43,7 +136,7 @@ body {
 
 .terminal-heading {
   height: 40px;
-  background-color: #262626;
+  background-color: var(--color1);
   color: #fff;
 
   border-top-left-radius: 5px;
@@ -74,7 +167,7 @@ body {
 }
 
 .terminal-heading h3 > i {
-  color: orangered;
+  color: var(--color4);
   margin-right: 4px;
   padding-top: 2px;
   font-size: 0.9rem;
@@ -94,22 +187,23 @@ body {
   align-items: center;
   font-size: 18px;
 
-  background-color: #000;
-  color: #262626;
+  background-color: var(--color1);
+  /* color: #262626; */
+  color: var(--color4);
 }
 
 .terminal-heading button:hover,
 .terminal-heading button:focus {
-  background-color: #fff;
+  background-color: var(--color2);
   /* color: #591902; */
-  color: orangered;
+  color: var(--color3);
 }
 
 .terminal-heading button i {
   width: 20px;
   transform: rotate(180deg);
 
-  transition: 0.3s ease-out;
+  transition: transform 0.3s ease-out;
 }
 
 .terminal-heading button.hidden i {
@@ -123,8 +217,8 @@ body {
 }
 
 .terminal-console textarea {
-  background-color: #262626;
-  color: #fff;
+  background-color: var(--color5);
+  color: var(--color3);
   height: 100%;
   width: 100%;
   padding: 8px;
@@ -140,5 +234,7 @@ body {
 textarea:focus {
   outline: none;
 
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--color4);
 }
+
+/* !End of Terminal css */
