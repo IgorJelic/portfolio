@@ -31,7 +31,7 @@ const DIRECTORIES = {
 let CURRENT_DIRECTORY = DIRECTORIES.home;
 
 const help =
-  "dir - show available directories\ncd <target> - change directory to <target>\nopen cv - open MyCV.pdf in new tab\ndownload cv - download MyCV.pdf\nquit - close portfolio\nclose - close terminal\n";
+  "dir - show available directories\ncd <dir> - change directory to <dir>\nopen cv - open MyCV.pdf in new tab\ndownload cv - download MyCV.pdf\nquit - close portfolio\nclose - close terminal\n<Enter> - clear console\n";
 
 // ! END OF TERMINAL VARIABLES
 
