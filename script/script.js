@@ -8,6 +8,14 @@ const socialNetworkDiv = document.querySelector(".social-network");
 const contentContainer = document.querySelector(".content-container");
 const contentRight = document.querySelector(".content-right");
 
+const currentDirContainer = document.querySelector(".current-dir-container");
+
+// ? GITHUB API
+
+const APIURL = "https://api.github.com/users/IgorJelic";
+
+// ? END OF GITHUB API
+
 // ! TERMINAL VARIABLES
 // CV path
 const pathCV = "../files/MyCV.pdf";
@@ -31,7 +39,7 @@ const DIRECTORIES = {
 let CURRENT_DIRECTORY = DIRECTORIES.home;
 
 const help =
-  "dir - show available directories\ncd <dir> - change directory to <dir>\nopen cv - open MyCV.pdf in new tab\ndownload cv - download MyCV.pdf\nquit - close portfolio\nclose - close terminal\n<Enter> - clear console\n";
+  "dir - show available directories\ncd <dir> - change directory to <dir>\nopen cv - open MyCV.pdf in new tab\ndownload cv - download MyCV.pdf\nclose - close terminal\nquit - close portfolio\n<Enter> - clear console\n";
 
 // ! END OF TERMINAL VARIABLES
 
@@ -39,9 +47,12 @@ contactToggleBtn.addEventListener("click", () => {
   socialNetworkDiv.classList.toggle("active");
 });
 
+updateCurrentDirContainer(CURRENT_DIRECTORY);
+
 terminalToggleBtn.addEventListener("click", () => {
   terminalContainer.classList.toggle("hidden");
   terminalToggleBtn.classList.toggle("hidden");
+  currentDirContainer.classList.toggle("active");
 
   terminalInput.focus();
 
@@ -101,11 +112,15 @@ function executeAction(action) {
       return "";
     case "help":
       return help;
+    case "?":
+      return help;
     case "quit":
       window.close();
       break;
-    default:
+    case "":
       return "";
+    default:
+      return "Unknown Command...\n";
   }
 }
 
@@ -116,5 +131,32 @@ function slide(destination) {
   // let movement = CURRENT_DIRECTORY - destination;
   contentRight.style.transform = `translateY(-${destination * sliderHeight}px)`;
 
+  updateCurrentDirContainer(destination);
+
   CURRENT_DIRECTORY = destination;
+}
+
+function updateCurrentDirContainer(destination) {
+  switch (destination) {
+    case 0:
+      currentDirContainer.innerText = "/home";
+
+      break;
+    case 1:
+      currentDirContainer.innerText = "/skills";
+      break;
+    case 2:
+      currentDirContainer.innerText = "/projects";
+      break;
+    case 3:
+      currentDirContainer.innerText = "/interests";
+      break;
+
+    default:
+      break;
+  }
+  // currentDirContainer.style.color = "rgb(242, 68, 5)";
+  // setTimeout(() => {
+  //   currentDirContainer.style.color = "rgba(64, 64, 64, 0.5)";
+  // }, 1500);
 }

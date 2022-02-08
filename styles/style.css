@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&display=swap");
 
 :root {
-  --color1: #f24405;
-  --color2: #a62f03;
-  --color3: #a6a6a6;
-  --color4: #404040;
-  --color5: #0d0d0d;
+  --color1: rgb(242, 68, 5);
+  --color2: rgb(166, 47, 3);
+  --color3: rgb(166, 166, 166);
+  --color4: rgb(64, 64, 64);
+  --color5: rgb(13, 13, 13);
 
   /* --accent-color: orangered; */
 }
@@ -288,6 +288,53 @@ body {
   text-indent: 40px;
 } */
 
+#my-projects {
+  background-image: url("../files/projects-bgd11.jpg");
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.project-container {
+  height: 40%;
+  width: 60%;
+
+  padding: 8px 16px;
+
+  /* background-color: var(--color3); */
+  background-color: rgba(255, 255, 255, 0.7);
+  /* background-image: url("");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+
+  color: var(--color5);
+
+  border-radius: 10px;
+
+  border: 2px solid var(--color4);
+  box-shadow: 0 0 4px var(--color4);
+}
+
+.project-title {
+  color: var(--color2);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.language {
+  font-weight: 500;
+  color: var(--color4);
+}
+
+.description {
+  font-size: 0.8rem;
+  color: var(--color4);
+  text-align: justify;
+}
+
 /* ! End of RIGHT Card */
 
 /* !End of Content css */
@@ -424,3 +471,34 @@ textarea:focus {
 }
 
 /* !End of Terminal css */
+
+/* !Current dir container css */
+
+.current-dir-container {
+  position: fixed;
+  top: 20px;
+  right: -140px;
+  min-height: 56px;
+  min-width: 150px;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 100;
+
+  border-radius: 10px;
+  border: 2px solid rgba(64, 64, 64, 0.4);
+
+  color: rgba(255, 255, 255, 0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  user-select: none;
+
+  transition: right 0.3s ease-in-out;
+}
+
+.current-dir-container.active {
+  right: 20px;
+}
+
+/* !End of Current dir container css */
