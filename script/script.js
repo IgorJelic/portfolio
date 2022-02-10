@@ -9,6 +9,8 @@ const contentContainer = document.querySelector(".content-container");
 const contentRight = document.querySelector(".content-right");
 
 const currentDirContainer = document.querySelector(".current-dir-container");
+const nextProjectBtn = document.getElementById("next-project");
+const prevProjectBtn = document.getElementById("prev-project");
 
 // ? GITHUB API
 
@@ -37,8 +39,18 @@ const help =
 // ! END OF TERMINAL VARIABLES
 
 // let repos = [];
-
+let repoIndex = 0;
 getRepo(0);
+
+nextProjectBtn.addEventListener("click", () => {
+  repoIndex++;
+  getRepo(repoIndex);
+});
+
+prevProjectBtn.addEventListener("click", () => {
+  repoIndex--;
+  getRepo(repoIndex);
+});
 
 contactToggleBtn.addEventListener("click", () => {
   socialNetworkDiv.classList.toggle("active");
@@ -159,7 +171,13 @@ async function getRepo(index) {
   try {
     const { data } = await axios(APIURL);
 
-    addRepoCard(data[index]);
+    if (index < 0) {
+      repoIndex = data.length - 1;
+      addRepoCard(data[repoIndex]);
+    } else {
+      repoIndex = index % data.length;
+      addRepoCard(data[repoIndex]);
+    }
   } catch (err) {
     alert("Problem fetching repos");
   }
