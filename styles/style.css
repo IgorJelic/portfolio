@@ -323,7 +323,6 @@ body {
   font-family: "Font Awesome 5 Brands";
   font-weight: 900;
   content: "\f092";
-  /* content: "\f007"; */
 
   position: absolute;
   color: rgba(255, 255, 255, 0.3);
@@ -336,7 +335,7 @@ body {
 
 .project-title {
   color: var(--color2);
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 700;
   margin: 20px 0;
   text-align: left;
@@ -345,8 +344,9 @@ body {
 }
 
 .language {
-  font-weight: 500;
+  font-weight: 400;
   color: var(--color4);
+  opacity: 0.9;
 
   position: relative;
 }
@@ -361,22 +361,55 @@ body {
   position: relative;
 }
 
-.project-container > div {
-  position: absolute;
-  color: rgba(255, 255, 255, 0.3);
-  top: -40px;
-  right: -20px;
-  font-size: 10rem;
-
-  transform: rotateZ(20deg);
-  z-index: 0;
-}
-
 .project-link > i {
   color: var(--color4);
   opacity: 0.8;
   font-size: 1rem;
 }
+
+.project-card-footer {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  bottom: 0;
+  left: 0;
+
+  padding: 0 24px;
+
+  border-top: 1px solid rgb(140, 140, 140);
+
+  background-color: rgba(166, 166, 166, 0.8);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-card-footer > a {
+  font-size: 0.8rem;
+  font-family: inherit;
+
+  text-decoration: none;
+  color: var(--color4);
+
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#prev-project,
+#next-project {
+  font-size: 0.9rem;
+}
+
+.project-card-footer > a:hover {
+  color: var(--color2);
+}
+
+/* --color1: rgb(242, 68, 5);
+  --color2: rgb(166, 47, 3);
+  --color3: rgb(166, 166, 166);
+  --color4: rgb(64, 64, 64);
+  --color5: rgb(13, 13, 13); */
 
 /* ! End of RIGHT Card */
 

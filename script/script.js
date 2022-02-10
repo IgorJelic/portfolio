@@ -12,7 +12,7 @@ const currentDirContainer = document.querySelector(".current-dir-container");
 
 // ? GITHUB API
 
-const APIURL = "https://api.github.com/users/IgorJelic";
+const APIURL = "https://api.github.com/users/IgorJelic/repos?sort=created";
 
 // ? END OF GITHUB API
 
@@ -29,19 +29,16 @@ const DIRECTORIES = {
   interests: 3,
 };
 
-// const AVAILABLE_DIRECTORIES = [
-//   "home",
-//   "my-skills",
-//   "my-projects",
-//   "my-interests",
-// ];
-
 let CURRENT_DIRECTORY = DIRECTORIES.home;
 
 const help =
   "dir - show available directories\ncd <dir> - change directory to <dir>\nopen cv - open MyCV.pdf in new tab\ndownload cv - download MyCV.pdf\nclose - close terminal\nquit - close portfolio\n<Enter> - clear console\n";
 
 // ! END OF TERMINAL VARIABLES
+
+// let repos = [];
+
+getRepo(0);
 
 contactToggleBtn.addEventListener("click", () => {
   socialNetworkDiv.classList.toggle("active");
@@ -155,8 +152,47 @@ function updateCurrentDirContainer(destination) {
     default:
       break;
   }
-  // currentDirContainer.style.color = "rgb(242, 68, 5)";
-  // setTimeout(() => {
-  //   currentDirContainer.style.color = "rgba(64, 64, 64, 0.5)";
-  // }, 1500);
+}
+
+/* GET REPOS FROM GITHUB API */
+async function getRepo(index) {
+  try {
+    const { data } = await axios(APIURL);
+
+    addRepoCard(data[index]);
+  } catch (err) {
+    alert("Problem fetching repos");
+  }
+}
+
+function addRepoCard(repo) {
+  const repoTitle = document.getElementById("project-title");
+  const repoDescription = document.getElementById("description");
+  const repoLink = document.getElementById("project-git-link");
+
+  repoTitle.innerHTML = repo.name;
+  repoTitle.innerHTML = `
+              ${repo.name}
+              
+  `;
+  repoDescription.innerText = repo.description;
+  repoLink.href = repo.html_url;
+  getLanguages(`/${repo.name}/languages`);
+}
+
+async function getLanguages(url) {
+  const repoLanguages = document.getElementById("language");
+  repoLanguages.innerText = "";
+  // repoLanguages.innerText = "Languages: ";
+  try {
+    const { data } = await axios(
+      "https://api.github.com/repos/IgorJelic" + url
+    );
+
+    // keys vraca niz kljuceva
+    repoLanguages.innerText =
+      Object.keys(data) == "" ? "No code" : Object.keys(data);
+  } catch (err) {
+    alert("Problem fetching repos");
+  }
 }
